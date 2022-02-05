@@ -46,6 +46,7 @@
  
 ## References 
 * How to CMake Good https://www.youtube.com/watch?v=_yFPO1ofyF0&list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s
+* https://github.com/vector-of-bool/cmrc/tree/master/tests
 * https://cmake.org/cmake/help/latest/index.html
 * https://stackoverflow.com/questions/25941536/what-is-a-cmake-generator
 * https://raw.githubusercontent.com/leimao/CMake_Examples
