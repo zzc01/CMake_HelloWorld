@@ -1,0 +1,10 @@
+^C:\DEV\CMAKETEST\ADDINGCMAKELISTS0B\BUILD\CMAKEFILES\025656CCD227085B30883B8F9A76C909\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Dev/CmakeTest/AddingCMakeLists0b -BC:/Dev/CmakeTest/AddingCMakeLists0b/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Dev/CmakeTest/AddingCMakeLists0b/build/MyProject.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
