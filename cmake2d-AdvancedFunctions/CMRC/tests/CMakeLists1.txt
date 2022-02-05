@@ -1,0 +1,102 @@
+# in build/
+# cmake .. 
+# cmake --build . 
+# main.exe
+# ctest 
+
+
+# demonstrating test a code 
+
+############################################################ 
+#normal add_library(target sources)
+#cmrc_add_resource_library(simple ALIAS rc::simple hello.txt)
+
+#add_executable(simple-test simple.cpp)
+#if don't include this line. will get a error cannot find cmrc/cmrc.hpp
+# but linking rc::simple has nothing to do with cmrc/cmrc.hpp 
+# perhaps in the cmrc_add_resource_library() function adds cmrc/cmrc.hpp path 
+#target_link_libraries(simple-test PRIVATE rc::simple)
+
+# create a test called simple using simple-test.exe
+#add_test(simple simple-test)
+
+#set_property(
+	# here put the test name which is simple 
+#	TEST simple 
+#	PROPERTY PASS_REGULAR_EXPRESSION
+#	"^Hello, world!" 
+#	) 
+	
+# set property on a TEST of name simple 
+# the property set is PASS_REGULAR_EXPRESSION with value "^Hello, wor1ld!"
+	
+############################################################ 
+#cmrc_add_resource_library(whence
+#	ALIAS rc::whence 
+#	WHENCE subdir_a
+#	subdir_a/subdir_b/file_a.txt
+#	)
+
+#add_executable(whence-test whence.cpp)	
+#target_link_libraries(whence-test PRIVATE rc::whence)
+#add_test(whence whence-test)
+#set_property(
+	# here put the test name which is whence 
+#	TEST whence 
+#	PROPERTY PASS_REGULAR_EXPRESSION
+#	"^I am a file!"
+#	)
+
+# set property on a TEST of name whence 
+# the property set is PASS_REGULAR_EXPRESSION with value "^I am not a file!"
+	
+############################################################ 
+#function(cmrc_add_test test_name main_source resource_file pass_regex whence_arg)
+function(cmrc_add_test)
+	set(options)
+	set(args)
+	set(list_args)
+	cmake_parse_arguments(
+		PARSE_ARGV 0 
+		test 
+		"${options}"
+		"${args}"
+		"${list_args}"
+	)
+	
+	message(STATUS "Called cmrc_add_test()")
+	foreach(arg IN LISTS test_UNPARSED_ARGUMENTS)
+		message(STATUS "Unparsed argument: ${arg}")
+	endforeach()
+	
+	#cmrc_add_resource_library(
+	#	rc_${test_name}
+	#	NAMESPACE ${test_name}
+	#	${resource_file}
+	#	WHENCE "${whence_arg}"
+	#)
+	#add_executable("${test_name}" "${main_source}")
+	#target_link_libraries("${test_name}" PRIVATE rc_${test_name})
+	#add_test("${test_name}" "${test_name}")
+	#set_property(
+	#	TEST "${test_name}"
+	#	PROPERTY PASS_REGULAR_EXPRESSION
+	#	"${pass_regex}"
+	#	)
+endfunction()
+
+cmrc_add_test(
+	simple 
+	simple.cpp
+	hello.txt
+	"^Hello, world!"
+	""
+)
+
+cmrc_add_test(
+	whence 
+	whence.cpp
+	subdir_a/subdir_b/file_a.txt
+	"^I am a file!"
+	subdir_a
+)
