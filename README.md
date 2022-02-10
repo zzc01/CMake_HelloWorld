@@ -12,7 +12,7 @@
 #### [cmake1a-AddingExecutable](/cmake1a-AddingExecutable)
 * make -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=/MyProject ..
 * nmake install DESTDIR=.. or nmake DESTDIR=MyProject install
-* add_executable() and inclue()
+* add_executable() and install()
 
 #### [cmake1b-AddLibrary](/cmake1b-AddLibrary)
 * add_library() and target_link_libraries() 
