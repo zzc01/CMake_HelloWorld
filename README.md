@@ -10,7 +10,7 @@
 * Build Visual Studio project using cmake command line (without using Visual Studio) 
 
 #### [cmake1a-AddingExecutable](/cmake1a-AddingExecutable)
-* make -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=/MyProject ..
+* cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=/MyProject ..
 * nmake install DESTDIR=.. or nmake DESTDIR=MyProject install
 * add_executable() and install()
 
