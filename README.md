@@ -10,6 +10,7 @@
 * Build Visual Studio project using cmake command line (without using Visual Studio) 
 
 #### [cmake1a-AddingExecutable](/cmake1a-AddingExecutable)
+* Run from a Visual Studio Native Tools Command Prompt and not a plain command prompt. That way all the required paths are correctly setup and visible to cmake.
 * cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=/MyProject ..
 * nmake install DESTDIR=.. or nmake DESTDIR=MyProject install
 * add_executable() and install()
